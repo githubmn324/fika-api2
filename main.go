@@ -15,13 +15,13 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
-		// context から取得した authToken を受け取る
-		auth0Token, ok := c.Value("auth0-token").(string)
-		if !ok {
-			fmt.Println("token not found")
-		}
+		// TEST - context から取得した authToken を受け取る → 上手くいかない
+		// auth0Token, ok := c.Value("auth0-token").(string)
+		// if !ok {
+		// 	fmt.Println("token not found")
+		// }
 
-		// auth0Token := c.Request.Header.Get("auth0-token")
+		auth0Token := c.Request.Header.Get("auth0-token")
 		requestDump, err := httputil.DumpRequest(c.Request, true)
 		if err != nil {
 			fmt.Println(err)
